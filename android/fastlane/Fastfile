@@ -11,16 +11,9 @@ platform :android do
       ENV["GOOGLE_SERVICES_JSON"]
     )
     
-    # Build APK for GitHub Release
+    # Build unsigned APK for GitHub Release
     gradle(
-      task: "assemble",
-      build_type: "Release",
-      properties: {
-        "android.injected.signing.store.file" => File.join(android_dir, "app/pocketpal-release-key.keystore"),
-        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
-        "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
-        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"]
-      }
+      task: "assembleRelease"
     )
   end
 end
