@@ -1,0 +1,26 @@
+default_platform :android
+
+platform :android do
+  desc "Build Android app for GitHub Release"
+  lane :build_android_release do
+    android_dir = File.expand_path('..', Dir.pwd)
+    
+    # Create google-services.json from GitHub secret
+    File.write(
+      File.join(android_dir, "app/google-services.json"),
+      ENV["GOOGLE_SERVICES_JSON"]
+    )
+    
+    # Build APK for GitHub Release
+    gradle(
+      task: "assemble",
+      build_type: "Release",
+      properties: {
+        "android.injected.signing.store.file" => File.join(android_dir, "app/pocketpal-release-key.keystore"),
+        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"]
+      }
+    )
+  end
+end
