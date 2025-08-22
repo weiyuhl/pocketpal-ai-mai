@@ -100,12 +100,7 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        release {
-            storeFile file("pocketpal-release-key.keystore")
-            storePassword project.env.get("APP_RELEASE_STORE_PASSWORD")
-            keyAlias "pocketpal_key_alias"
-            keyPassword project.env.get("APP_RELEASE_KEY_PASSWORD")
-        }
+        // Release signing config removed - using debug signing for releases
     }
     buildTypes {
         debug {
