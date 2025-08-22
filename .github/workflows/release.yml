@@ -72,7 +72,11 @@ jobs:
           git commit -m "chore(release): bump version" || echo "No changes to commit"
           git push
 
-      # Step 8: Build Android APK (Debug version without signing)
+      # Step 8: Set gradlew permissions
+      - name: Set gradlew permissions
+        run: chmod +x android/gradlew
+
+      # Step 9: Build Android APK (Debug version without signing)
       - name: Build Android APK
         working-directory: android
         env:
@@ -81,7 +85,7 @@ jobs:
         run: |
           bundle exec fastlane build_android_release
 
-      # Step 9: Create GitHub Release with APK
+      # Step 10: Create GitHub Release with APK
       - name: Create GitHub Release with APK
         run: |
           # Get current timestamp for unique version
