@@ -1,6 +1,6 @@
 {
   "name": "PocketPal",
-  "version": "1.10.24",
+  "version": "1.10.25",
   "private": true,
   "scripts": {
     "prepare": "husky",
@@ -33,7 +33,6 @@
     "@react-native-clipboard/clipboard": "^1.15.0",
     "@react-native-community/blur": "^4.4.1",
     "@react-native-community/slider": "^4.5.5",
-
     "@react-native-masked-view/masked-view": "^0.3.1",
     "@react-native-picker/picker": "^2.10.2",
     "@react-navigation/bottom-tabs": "^6.6.1",
